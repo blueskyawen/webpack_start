@@ -1,0 +1,11 @@
+.size_big {
+    font-size: 20px;
+    font-weight: 600;
+    background-image: url("./IMG_1301.JPG");
+    height: 200px;
+    width: 300px;
+}
+.size_img {
+    height: 200px;
+    width: 200px;
+}
