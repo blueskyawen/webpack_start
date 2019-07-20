@@ -2,6 +2,8 @@ import _ from "lodash";
 import './common_1.css';
 import './common_2.css';
 import myImg from './IMG_1497.JPG';
+import data from './data.xml';
+import datajson from './data2';
 
 function component() {
     var element = document.createElement('div');
@@ -17,9 +19,20 @@ function eleImage() {
     var myImage = new Image();
     myImage.src = myImg;
     myImage.classList.add('size_img');
+    console.log(data);
+    console.log(datajson);
 
     return myImage;
 }
 
+function eleHeader() {
+    var headerHTML = require('./header.html');
+    console.log(headerHTML);
+    var element = document.createElement('div');
+    element.innerHTML = headerHTML;
+    return element;
+}
+
+document.body.appendChild(eleHeader());
 document.body.appendChild(component());
 document.body.appendChild(eleImage());
