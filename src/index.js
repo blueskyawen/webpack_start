@@ -4,6 +4,7 @@ import './common_2.css';
 import myImg from './IMG_1497.JPG';
 import data from './data.xml';
 import datajson from './data2';
+import printMe from './print.js';
 
 function component() {
     var element = document.createElement('div');
@@ -33,6 +34,14 @@ function eleHeader() {
     return element;
 }
 
+function eleButton() {
+    var btn = document.createElement('button');
+    btn.innerHTML = 'Click me and check the console!';
+    btn.onclick = printMe;
+    return btn;
+}
+
 document.body.appendChild(eleHeader());
 document.body.appendChild(component());
 document.body.appendChild(eleImage());
+document.body.appendChild(eleButton());
