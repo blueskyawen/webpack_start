@@ -13,7 +13,8 @@ module.exports = {
     output: {
         // filename: 'bundle.js',
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -61,7 +62,8 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({filename: 'w-common.css'}),
         new HtmlWebpackPlugin({
-            title: 'Output Html Webpack'
+            title: 'Webpack Server',
+            favicon: './src/webpack.png'
         }),
     ]
 };
