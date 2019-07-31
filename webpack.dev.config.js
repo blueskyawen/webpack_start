@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
         contentBase: './dist',
         compress: true,
         host: 'localhost',
-        port: 5000,
+        port: process.env.PORT || 8080,
         inline: true,
         overlay: { warnings: false, errors: true },
         proxy: {}

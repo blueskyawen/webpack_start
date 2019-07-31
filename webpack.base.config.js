@@ -3,6 +3,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     // entry: './src/index.js',
@@ -64,6 +65,32 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Webpack Server',
             favicon: './src/webpack.png'
-        }),
-    ]
+        })
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: "initial",
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    name: "vendor-common"
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        },
+        runtimeChunk: {
+            name: entrypoint => `manifest.${entrypoint.name}`
+        }
+    }
 };
