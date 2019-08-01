@@ -17,6 +17,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js', '.json' ]
+    },
     module: {
         rules: [
             /*{
@@ -25,6 +28,10 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: require.resolve("./src/index.js"),
+                use: "imports-loader?$=jquery"
             },*/
             {
                 test: /\.css$/,
@@ -56,6 +63,11 @@ module.exports = {
                 use: [
                     'xml-loader'
                 ]
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
             }
         ]
     },
